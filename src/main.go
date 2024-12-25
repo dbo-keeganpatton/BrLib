@@ -1,16 +1,19 @@
 package main
 
-
 import (
-	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 )
 
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "this is a placeholder", r.URL.Path[1:])
+	
+	tmpl, _ := template.ParseFiles("./templates/main.html")
+	tmpl.Execute(w, nil)
+
 }
+
 
 func main() {
 	http.HandleFunc("/", handler)
