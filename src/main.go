@@ -9,7 +9,7 @@ import (
 
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "this is a placeholder", r.URL.Path[1:])
+	fmt.Fprint(w, "this is a placeholder", r.URL.Path[1:])
 }
 
 func main() {
