@@ -9,7 +9,7 @@ import (
 
 
 /***********************************
-		     Page Routing 
+				Page Routing 
 ***********************************/
 func mainPageHandler(w http.ResponseWriter, r *http.Request) {
 	 tmpl, _ := template.ParseFiles("./web/templates/index.html")
@@ -28,7 +28,7 @@ func storiesHandler(w http.ResponseWriter, r *http.Request) {
 
 
 /***********************************
-		  Serves the App 
+          Serves the App 
 ***********************************/
 func main() {
 
