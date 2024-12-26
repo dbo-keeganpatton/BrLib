@@ -7,17 +7,41 @@ import (
 )
 
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	
-	tmpl, _ := template.ParseFiles("./templates/main.html")
-	tmpl.Execute(w, nil)
 
+/***********************************
+		     Page Routing 
+***********************************/
+func mainPageHandler(w http.ResponseWriter, r *http.Request) {
+	 tmpl, _ := template.ParseFiles("./web/templates/index.html")
+	 tmpl.Execute(w, nil)
+}
+
+func loginPageHandler(w http.ResponseWriter, r *http.Request) {
+	 tmpl, _ := template.ParseFiles( "./web/templates/login.html")
+	 tmpl.Execute(w, nil)
+}
+
+func storiesHandler(w http.ResponseWriter, r *http.Request) {
+	 tmpl, _ := template.ParseFiles("./web/templates/stories.html")
+	 tmpl.Execute(w, nil)
 }
 
 
+/***********************************
+		  Serves the App 
+***********************************/
 func main() {
-	http.HandleFunc("/", handler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+
+	 fs := http.FileServer(http.Dir("./web/static"))
+	 http.Handle("/static/", http.StripPrefix("/static/", fs))
+
+
+	 http.HandleFunc("/", mainPageHandler)
+	 http.HandleFunc("/login", loginPageHandler)
+	 http.HandleFunc("/stories", storiesHandler)
+
+	 log.Fatal(http.ListenAndServe(":8080", nil))
+
 }
 
 
