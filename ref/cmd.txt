@@ -1,0 +1,8 @@
+- Set Tailwind to watch for updated styles
+    $ npx tailwindcss -i ./src/main.css -o ./src/output.css --watch
+
+- Run app in local server
+    $ go run {appname}.go
+
+- update packages
+    $ go mod tidy

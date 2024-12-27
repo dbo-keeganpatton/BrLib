@@ -8,6 +8,7 @@ import (
 
 
 
+
 /***********************************
             Page Routing 
 ***********************************/
@@ -17,14 +18,21 @@ func mainPageHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func loginPageHandler(w http.ResponseWriter, r *http.Request) {
-	 tmpl, _ := template.ParseFiles( "src/templates/login.html")
+	 tmpl, _ := template.ParseFiles("src/templates/login.html")
 	 tmpl.Execute(w, nil)
 }
 
-func storiesHandler(w http.ResponseWriter, r *http.Request) {
+func storiesPageHandler(w http.ResponseWriter, r *http.Request) {
 	 tmpl, _ := template.ParseFiles("src/templates/stories.html")
 	 tmpl.Execute(w, nil)
 }
+
+func editorPageHandler(w http.ResponseWriter, r *http.Request) {
+    tmpl, _ :=template.ParseFiles("src/templates/editor.html")
+    tmpl.Execute(w, nil)
+}
+
+
 
 
 /***********************************
@@ -36,7 +44,8 @@ func main() {
 
 	 http.HandleFunc("/main", mainPageHandler)
 	 http.HandleFunc("/login", loginPageHandler)
-	 http.HandleFunc("/stories", storiesHandler)
+	 http.HandleFunc("/stories", storiesPageHandler)
+    http.HandleFunc("/editor", editorPageHandler)
 
 	 log.Fatal(http.ListenAndServe(":8080", nil))
 }

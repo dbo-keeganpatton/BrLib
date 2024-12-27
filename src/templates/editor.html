@@ -1,0 +1,57 @@
+<!--   ! Doc Links !
+ Quill: https://quilljs.com/docs/quickstart
+ HTMX: https://htmx.org/examples/file-upload/
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>BrLib</title>
+        <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+        <link rel="stylesheet" href="/src/output.css">
+        <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+</head>
+
+    <body class="bg-git_black_lite">
+        <h1 class="p-2 text-2xl text-center text-git_red">Editor</h1>
+        
+        <!------------------------------------------------ 
+                        Quill Text Editor  
+        --------------------------------------------------->
+        <div id="editor">
+            <p>Hello World!</p>
+            <p>Some initial <strong>bold</strong> text</p>
+            <p><br /></p>
+        </div>
+
+        <script>
+          const quill = new Quill('#editor', {
+            theme: 'snow'
+          });
+        </script>
+
+
+
+
+        <!------------------------------------------------ 
+          HTMX Submission Form for external files to Editor 
+        --------------------------------------------------->
+        <form hx-encoding='multipart/form-data' hx-post='/upload'
+              _='on htmx:xhr:progress(loaded, total) set #progress.value to (loaded/total)*100'
+              class="p-2 text-center"
+        >
+            <input type='file' name='file' class="text-git_dark_white justify-center items-center text-center">
+            <button class="text-git_yellow">Upload</button><br><br>
+            <progress id='progress' value='0' max='100'></progress> 
+        </form>
+
+
+
+    </body>
+</html>
+
+
+
