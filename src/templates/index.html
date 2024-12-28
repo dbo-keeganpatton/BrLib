@@ -21,7 +21,6 @@
         <meta charset="UTF-8">
         <title>BrLib</title>
         <script src="https://unpkg.com/htmx.org@2.0.4"></script>
-        <link rel="stylesheet" href="/src/output.css">
 
         <!-- I am placing all page CSS here, I just dont want other files -->
         <style>
@@ -86,23 +85,33 @@
 
 </head>
 
+
+
+<!----------------------------------------------------------
+                      Main Page Template
+----------------------------------------------------------->    
     <body 
         style="
-        margin: 0;
         margin: 0;
         display: flex;
         min-height: 100vh;
         background-color: #21262d;
         "
     >
+        <!--Side Bar Navigation -->
         <div class="sidebar">
-            <div class="sidebar-opt">Archive</div>
+            <div class="sidebar-opt">
+                <a href="/stories">Archive</a>
+            </div>
             <div class="sidebar-opt">Authors</div>
             <div class="sidebar-opt">Categories</div>
-            <div class="sidebar-opt">Editor</div>
+            <div class="sidebar-opt">
+                <a href="/editor">Editor</a>
+            </div>
             <div class="sidebar-opt">Loot Box</div>
         </div>
-        
+       
+        <!-- Center Pane Section -->
         <div class="main-content">
             <h1 class="mission-header">Empowering Storytelling through Open Collaboration</h1>
            
