@@ -3,6 +3,23 @@
  HTMX: https://htmx.org/examples/file-upload/
 -->
 
+<!-- Site Color Pallete
+'git_black': '#0d1117',
+'git_black_med': '#161b22',
+'git_black_lite': '#21262d',
+'git_grey': '#89929b',
+'git_dark_white': '#c6cdd5',
+'git_white': '#ecf2f8',
+'git_red': '#fa7970',
+'git_yellow': '#faa356',
+'git_green': '#7ce38b',
+'git_lite_blue': '#a2d2fb',
+'git_blue': '#77bdfb',
+'git_purple': '#cea5fb'
+-->
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,24 +29,88 @@
         <script src="https://unpkg.com/htmx.org@2.0.4"></script>
         <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+        
+        <style>
+        .body {
+        background: #21262d;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .body div {
+        padding: 5px;
+        }
+        
+        .body h1 {
+        color: #cea5fb;
+        }
+
+        .editor {
+        background: #161b22;
+        font-family: Georgia;
+        font-size: 18px;
+        color: #ecf2f8;
+        width: 55vw;
+        height: 80vh;
+        }
+
+        .sidebar {
+        width: 250px;
+        background-color: #89929b;
+        padding: 20px;
+        }
+
+        .sidebar-opt {
+        padding: 10px;
+        margin: 5px 0;
+        background-color: #faa356;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        }
+        
+        .sidebar-opt:hover {
+            background-color: #e0e0e0;
+        }
+
+        </style>
+
+
 </head>
 
-    <body class="bg-git_black_lite">
-        <h1 class="p-2 text-2xl text-center text-git_red">Editor</h1>
-        
+    <body class="body">
+        <h1>Editor</h1>
+       
+
+         <div class="sidebar">
+            <div class="sidebar-opt">
+                <a href="/stories">Archive</a>
+            </div>
+            <div class="sidebar-opt">Authors</div>
+            <div class="sidebar-opt">Categories</div>
+            <div class="sidebar-opt">
+                <a href="/editor">Editor</a>
+            </div>
+            <div class="sidebar-opt">Loot Box</div>
+        </div>
+
+
         <!------------------------------------------------ 
                         Quill Text Editor  
         --------------------------------------------------->
-        <div id="editor">
-            <p>Hello World!</p>
-            <p>Some initial <strong>bold</strong> text</p>
-            <p><br /></p>
+        <div id="editor" class="editor">
         </div>
 
         <script>
-          const quill = new Quill('#editor', {
-            theme: 'snow'
-          });
+            const options = {
+                theme: 'snow',
+                syntax: true,
+                modules : {
+                    toolbar: null
+                }
+            }
+            const quill = new Quill('#editor', options);
         </script>
 
 
@@ -40,10 +121,9 @@
         --------------------------------------------------->
         <form hx-encoding='multipart/form-data' hx-post='/upload'
               _='on htmx:xhr:progress(loaded, total) set #progress.value to (loaded/total)*100'
-              class="p-2 text-center"
         >
-            <input type='file' name='file' class="text-git_dark_white justify-center items-center text-center">
-            <button class="text-git_yellow">Upload</button><br><br>
+            <input type='file' name='file'>
+            <button>Upload</button>
             <progress id='progress' value='0' max='100'></progress> 
         </form>
 

@@ -6,3 +6,8 @@
 
 - update packages
     $ go mod tidy
+
+- Use Air to auto watch file updates and update server automatically
+    $ air
+    $ air server --port 8080
+    $ air -c .air.toml
