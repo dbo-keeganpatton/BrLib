@@ -42,7 +42,7 @@ func main() {
 	 fs := http.FileServer(http.Dir("src"))
 	 http.Handle("/src/", http.StripPrefix("/src/", fs))
 
-	 http.HandleFunc("/main", mainPageHandler)
+	 http.HandleFunc("/", mainPageHandler)
 	 http.HandleFunc("/login", loginPageHandler)
 	 http.HandleFunc("/stories", storiesPageHandler)
     http.HandleFunc("/editor", editorPageHandler)

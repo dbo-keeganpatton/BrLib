@@ -1,23 +1,146 @@
+<!-- Site Color Pallete
+'git_black': '#0d1117',
+'git_black_med': '#161b22',
+'git_black_lite': '#21262d',
+'git_grey': '#89929b',
+'git_dark_white': '#c6cdd5',
+'git_white': '#ecf2f8',
+'git_red': '#fa7970',
+'git_yellow': '#faa356',
+'git_green': '#7ce38b',
+'git_lite_blue': '#a2d2fb',
+'git_blue': '#77bdfb',
+'git_purple': '#cea5fb'
+-->
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Simple Go + HTMX Webpage</title>
-  <script src="https://unpkg.com/htmx.org@2.0.4"></script>
-  <link rel="stylesheet" href="/src/output.css"
+        <meta charset="UTF-8">
+        <title>BrLib</title>
+        <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+        <link rel="stylesheet" href="/src/output.css">
+
+        <!-- I am placing all page CSS here, I just dont want other files -->
+        <style>
+        .sidebar {
+        width: 250px;
+        background-color: #89929b;
+        padding: 20px;
+        }
+
+        .sidebar-opt {
+        padding: 10px;
+        margin: 5px 0;
+        background-color: #faa356;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        }
+        
+        .sidebar-opt:hover {
+            background-color: #e0e0e0;
+        }
+
+        .main-content {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        }
+
+        .mission-header {
+        font-family: Georgia; 
+        text-align: center;
+        color: #faa356;
+        margin-bottom: 30px;
+        }
+
+        .mission-text {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+        max-width: 600px;
+        align-self: center;
+        }
+
+        .footer {
+            margin-top: auto;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        </style>
+
 </head>
 
+    <body 
+        style="
+        margin: 0;
+        margin: 0;
+        display: flex;
+        min-height: 100vh;
+        background-color: #21262d;
+        "
+    >
+        <div class="sidebar">
+            <div class="sidebar-opt">Archive</div>
+            <div class="sidebar-opt">Authors</div>
+            <div class="sidebar-opt">Categories</div>
+            <div class="sidebar-opt">Editor</div>
+            <div class="sidebar-opt">Loot Box</div>
+        </div>
+        
+        <div class="main-content">
+            <h1 class="mission-header">Empowering Storytelling through Open Collaboration</h1>
+           
+            <div class="mission-text">
+                <p>
+                    BranchLibrary aims to change the way stories are told together. 
+                    We seek to provide a free writing platorm, that encourages writers to collaborate,
+                    share and enhance each other's work in an open source style of cooperation. 
+                    This platform is committed to fostering an inclusive and dynamic community where 
+                    the boundaries of fiction are limitless, and diverse voices are amplified.
+                    Help create a new paradigm in storytelling that is richer, 
+                    more interconnected, and endlessly imaginative.
+                </p>
+            </div>
 
-<body class="bg-red-950">
+            <div class="footer">
+                <div class="contact-info">
+                    <div>
+                        <h3>Contact Us</h3>
+                        <p>Email: brlibdev@zipmail.dev</p>
+                        <p>Phone: (123) 456-7890</p>
+                    </div>
+                    <div>
+                        <h3>Address</h3>
+                        <p>3487 Chestnut Park</p>
+                        <p>Dova, Pluto 89-897u9</p>
+                    </div>
+                    <div>
+                        <h3>Connect With Us</h3>
+                        <p>Social Media</p>
+                        <p>Social Media</p>
+                    </div>
+                </div>
 
-  <h1 class="font-bold underline">
-    This is our landing page where users will first see featured stories, and other<br>
-    promotional content.
-  </h1>
-  <div id="content">
-    </div>
+            </div>
 
-</body>
+        </div>
+</body> 
 
 </html>
 
