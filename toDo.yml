@@ -1,0 +1,4 @@
+Templates:
+  - editor.html:
+    - htmx submit button for file submission reloads the page and brings in elements
+      from the index page for some reason. 

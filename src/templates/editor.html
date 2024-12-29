@@ -32,19 +32,29 @@
         
         <style>
         .body {
-        background: #21262d;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        }
-
-        .body div {
-        padding: 5px;
+        flex-direction: row;
+        justify-content: flex-start;
+        background: #21262d;
         }
         
         .body h1 {
         color: #cea5fb;
+        align-self: center;
+        }
+
+        .main-pane {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        }
+
+        .submission-form {
+        color: white;
+        display: flex;
+        flex-direction: column;
         }
 
         .editor {
@@ -60,13 +70,14 @@
         width: 250px;
         background-color: #89929b;
         padding: 20px;
+        border-radius: 4px;
         }
 
         .sidebar-opt {
         padding: 10px;
         margin: 5px 0;
         background-color: #faa356;
-        border-radius: 5px;
+        border-radius: 4px;
         transition: background-color 0.3s;
         }
         
@@ -77,57 +88,61 @@
         </style>
 
 
+<!-- start template -->
 </head>
 
     <body class="body">
-        <h1>Editor</h1>
-       
+      
 
-         <div class="sidebar">
-            <div class="sidebar-opt">
-                <a href="/stories">Archive</a>
-            </div>
-            <div class="sidebar-opt">Authors</div>
-            <div class="sidebar-opt">Categories</div>
-            <div class="sidebar-opt">
-                <a href="/editor">Editor</a>
-            </div>
-            <div class="sidebar-opt">Loot Box</div>
+     <!------------------------------------------------ 
+                        Side Bar 
+      --------------------------------------------------->
+        <div class="sidebar">
+                <div class="sidebar-opt">
+                    <a href="/stories">Archive</a>
+                </div>
+                <div class="sidebar-opt">Authors</div>
+                <div class="sidebar-opt">Categories</div>
+                <div class="sidebar-opt">
+                    <a href="/editor">Editor</a>
+                </div>
+                <div class="sidebar-opt">Loot Box</div>
         </div>
 
+        <div class="main-pane">
+        
+            <h1>Editor</h1>
+            
+            <!------------------------------------------------ 
+              HTMX Submission Form for external files to Editor 
+            --------------------------------------------------->
+            <form hx-encoding='multipart/form-data' hx-post='/upload'
+                  _='on htmx:xhr:progress(loaded, total) set #progress.value to (loaded/total)*100'
+                class="submission-form"
+            >
+                <input type='file' name='file'>
+                <button>Upload</button>
+                <progress id='progress' value='0' max='100'></progress> 
+            </form>
 
-        <!------------------------------------------------ 
-                        Quill Text Editor  
-        --------------------------------------------------->
-        <div id="editor" class="editor">
+            
+            <!------------------------------------------------ 
+                            Quill Text Editor  
+            --------------------------------------------------->
+            <div id="editor" class="editor">
+                <script>
+                    const options = {
+                        theme: 'snow',
+                        syntax: true,
+                        modules : {
+                            toolbar: null
+                        }
+                    }
+                    const quill = new Quill('#editor', options);
+                </script>
+            </div>
+
         </div>
-
-        <script>
-            const options = {
-                theme: 'snow',
-                syntax: true,
-                modules : {
-                    toolbar: null
-                }
-            }
-            const quill = new Quill('#editor', options);
-        </script>
-
-
-
-
-        <!------------------------------------------------ 
-          HTMX Submission Form for external files to Editor 
-        --------------------------------------------------->
-        <form hx-encoding='multipart/form-data' hx-post='/upload'
-              _='on htmx:xhr:progress(loaded, total) set #progress.value to (loaded/total)*100'
-        >
-            <input type='file' name='file'>
-            <button>Upload</button>
-            <progress id='progress' value='0' max='100'></progress> 
-        </form>
-
-
 
     </body>
 </html>
