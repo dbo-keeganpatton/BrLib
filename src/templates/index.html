@@ -1,91 +1,10 @@
-<!-- Site Color Pallete
-'git_black': '#0d1117',
-'git_black_med': '#161b22',
-'git_black_lite': '#21262d',
-'git_grey': '#89929b',
-'git_dark_white': '#c6cdd5',
-'git_white': '#ecf2f8',
-'git_red': '#fa7970',
-'git_yellow': '#faa356',
-'git_green': '#7ce38b',
-'git_lite_blue': '#a2d2fb',
-'git_blue': '#77bdfb',
-'git_purple': '#cea5fb'
--->
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
         <meta charset="UTF-8">
         <title>BrLib</title>
         <script src="https://unpkg.com/htmx.org@2.0.4"></script>
-
-        <!-- I am placing all page CSS here, I just dont want other files -->
-        <style>
-        .sidebar {
-        width: 250px;
-        background-color: #89929b;
-        padding: 20px;
-        transition: width 0.3s ease;
-        }
-        
-        .sidebar.collapsed { width: 50px; }
-        .sidebar.expanded { width: 250px; }
-        
-        .sidebar-opt {
-        padding: 10px;
-        margin: 5px 0;
-        background-color: #faa356;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-        }
-        
-        .sidebar-opt:hover {
-            background-color: #e0e0e0;
-        }
-
-        .main-content {
-        flex: 1;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        }
-
-        .mission-header {
-        font-family: Georgia; 
-        text-align: center;
-        color: #faa356;
-        margin-bottom: 30px;
-        }
-
-        .mission-text {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        margin-bottom: 30px;
-        max-width: 600px;
-        align-self: center;
-        }
-
-        .footer {
-            margin-top: auto;
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: space-around;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        </style>
-
+        <link rel="stylesheet" href="src/static/style.css">
 </head>
 
 
@@ -93,14 +12,7 @@
 <!----------------------------------------------------------
                       Main Page Template
 ----------------------------------------------------------->    
-    <body 
-        style="
-        margin: 0;
-        display: flex;
-        min-height: 100vh;
-        background-color: #21262d;
-        "
-    >
+    <body class="body">
         
     {{ template "sidebar" . }}
         

@@ -3,24 +3,6 @@
  HTMX: https://htmx.org/examples/file-upload/
 -->
 
-<!-- Site Color Pallete
-'git_black': '#0d1117',
-'git_black_med': '#161b22',
-'git_black_lite': '#21262d',
-'git_grey': '#89929b',
-'git_dark_white': '#c6cdd5',
-'git_white': '#ecf2f8',
-'git_red': '#fa7970',
-'git_yellow': '#faa356',
-'git_green': '#7ce38b',
-'git_lite_blue': '#a2d2fb',
-'git_blue': '#77bdfb',
-'git_purple': '#cea5fb'
--->
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,68 +11,10 @@
         <script src="https://unpkg.com/htmx.org@2.0.4"></script>
         <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-        
-        <style>
-        .body {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        background: #21262d;
-        }
-        
-        .body h1 {
-        color: #cea5fb;
-        align-self: center;
-        }
-
-        .main-pane {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        flex-grow: 1;
-        }
-
-        .submission-form {
-        color: white;
-        display: flex;
-        flex-direction: column;
-        }
-
-        .editor {
-        background: #161b22;
-        font-family: Georgia;
-        font-size: 18px;
-        color: #ecf2f8;
-        width: 55vw;
-        height: 80vh;
-        }
-
-        .sidebar {
-        width: 250px;
-        background-color: #89929b;
-        padding: 20px;
-        border-radius: 4px;
-        }
-
-        .sidebar-opt {
-        padding: 10px;
-        margin: 5px 0;
-        background-color: #faa356;
-        border-radius: 4px;
-        transition: background-color 0.3s;
-        }
-        
-        .sidebar-opt:hover {
-            background-color: #e0e0e0;
-        }
-
-        </style>
-
-
-<!-- start template -->
+        <link rel="stylesheet" href="src/static/style.css">
 </head>
 
+<!-- start template -->
     <body class="body">
       
 

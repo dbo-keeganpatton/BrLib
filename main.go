@@ -38,7 +38,6 @@ func editorPageHandler(w http.ResponseWriter, r *http.Request) {
     tmpl.Execute(w, nil)
 }
 
-
 func handleToggleSidebar(w http.ResponseWriter, r *http.Request) {
     isExpanded := r.URL.Query().Get("expanded") == "true"
     tmpl, err := template.ParseFiles("src/templates/sidebar.html")
@@ -46,13 +45,11 @@ func handleToggleSidebar(w http.ResponseWriter, r *http.Request) {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
-    
-    err = tmpl.Execute(w, struct{ IsExpanded bool }{IsExpanded: !isExpanded})
+    err = tmpl.ExecuteTemplate(w, "sidebar", struct{ IsExpanded bool }{IsExpanded: !isExpanded})
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
-    } 
+    }
 }
-
 
 /***********************************
           Serves the App 
