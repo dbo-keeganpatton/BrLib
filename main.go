@@ -6,16 +6,22 @@ import (
 	"net/http"
 )
 
-
-
-
 /***********************************
-            Page Routing 
+            Page Routing
 ***********************************/
 func mainPageHandler(w http.ResponseWriter, r *http.Request) {
-	 tmpl, _ := template.ParseFiles("src/templates/index.html")
-	 tmpl.Execute(w, nil)
+    tmpl, err := template.ParseFiles("src/templates/index.html", "src/templates/sidebar.html")
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
+    
+    err = tmpl.Execute(w, struct{ IsExpanded bool }{IsExpanded: true})
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+    }
 }
+
 
 func loginPageHandler(w http.ResponseWriter, r *http.Request) {
 	 tmpl, _ := template.ParseFiles("src/templates/login.html")
@@ -33,6 +39,19 @@ func editorPageHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 
+func handleToggleSidebar(w http.ResponseWriter, r *http.Request) {
+    isExpanded := r.URL.Query().Get("expanded") == "true"
+    tmpl, err := template.ParseFiles("src/templates/sidebar.html")
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
+    
+    err = tmpl.Execute(w, struct{ IsExpanded bool }{IsExpanded: !isExpanded})
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+    } 
+}
 
 
 /***********************************
@@ -45,8 +64,8 @@ func main() {
 	 http.HandleFunc("/", mainPageHandler)
 	 http.HandleFunc("/login", loginPageHandler)
 	 http.HandleFunc("/stories", storiesPageHandler)
-    http.HandleFunc("/editor", editorPageHandler)
-
+     http.HandleFunc("/editor", editorPageHandler)
+     http.HandleFunc("/toggle-sidebar", handleToggleSidebar)
 	 log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
