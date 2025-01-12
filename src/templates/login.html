@@ -7,17 +7,18 @@
     <link rel="stylesheet" href="src/static/style.css">
 </head>
 
-<body class="bg-git_black_lite">
+<body>
+    {{ template "sidebar" . }}
 
-    <h1 class="p-2 text-2xl text-center text-git_red">Welcome to BrLib</h1>
+    <h1>Welcome to BrLib</h1>
 
-    <div class="h-screen flex items-center justify-center text-center">
+    <div>
 	    <form>
-        <label class="text-git_yellow" for="email">Email</label>
+        <label for="email">Email</label>
         <br>
         <input type="text" name="name" id="name" required/>
         <br>
-        <label class="text-git_yellow"for="password">Password</label>
+        <label for="password">Password</label>
         <br>
         <input type="password" required/>
        </form>

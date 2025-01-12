@@ -9,23 +9,8 @@
 
 
     <body class="body">
-        
-        <!------------------------------------------------- 
-                            Side Bar 
-        --------------------------------------------------->
-        <div class="sidebar">
-                <div class="sidebar-opt">
-                    <a href="/stories">Archive</a>
-                </div>
-                <div class="sidebar-opt">Authors</div>
-                <div class="sidebar-opt">Categories</div>
-                <div class="sidebar-opt">
-                    <a href="/editor">Editor</a>
-                </div>
-                <div class="sidebar-opt">Loot Box</div>
-        </div>
-    
-        <div class="main-pane">
+    {{ template "sidebar" . }}        
+       <div class="main-pane">
             
             <h1>Archive</h1>
            

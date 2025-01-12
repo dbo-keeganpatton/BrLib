@@ -18,23 +18,13 @@
     <body class="body">
       
 
-     <!------------------------------------------------ 
-                        Side Bar 
-      --------------------------------------------------->
-        <div class="sidebar">
-                <div class="sidebar-opt">
-                    <a href="/stories">Archive</a>
-                </div>
-                <div class="sidebar-opt">Authors</div>
-                <div class="sidebar-opt">Categories</div>
-                <div class="sidebar-opt">
-                    <a href="/editor">Editor</a>
-                </div>
-                <div class="sidebar-opt">Loot Box</div>
-        </div>
-
-        <div class="main-pane">
         
+        <div class="main-pane">
+        <!------------------------------------------------ 
+                        Side Bar 
+        --------------------------------------------------->
+        {{ template "sidebar" . }}
+            
             <h1>Editor</h1>
             
             <!------------------------------------------------ 

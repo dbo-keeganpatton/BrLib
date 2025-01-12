@@ -16,7 +16,7 @@ func mainPageHandler(w http.ResponseWriter, r *http.Request) {
         return
     }
     
-    err = tmpl.Execute(w, struct{ IsExpanded bool }{IsExpanded: true})
+    err = tmpl.Execute(w, struct{ IsExpanded bool }{IsExpanded: false})
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
     }
@@ -24,17 +24,17 @@ func mainPageHandler(w http.ResponseWriter, r *http.Request) {
 
 
 func loginPageHandler(w http.ResponseWriter, r *http.Request) {
-	 tmpl, _ := template.ParseFiles("src/templates/login.html")
+	 tmpl, _ := template.ParseFiles("src/templates/login.html", "src/templates/sidebar.html")
 	 tmpl.Execute(w, nil)
 }
 
 func storiesPageHandler(w http.ResponseWriter, r *http.Request) {
-	 tmpl, _ := template.ParseFiles("src/templates/stories.html")
+	 tmpl, _ := template.ParseFiles("src/templates/stories.html", "src/templates/sidebar.html")
 	 tmpl.Execute(w, nil)
 }
 
 func editorPageHandler(w http.ResponseWriter, r *http.Request) {
-    tmpl, _ :=template.ParseFiles("src/templates/editor.html")
+    tmpl, _ :=template.ParseFiles("src/templates/editor.html", "src/templates/sidebar.html" )
     tmpl.Execute(w, nil)
 }
 
