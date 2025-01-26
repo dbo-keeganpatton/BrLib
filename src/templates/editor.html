@@ -16,15 +16,13 @@
 
 <!-- start template -->
     <body class="body">
-      
-
-        
-        <div class="main-pane">
         <!------------------------------------------------ 
-                        Side Bar 
+                              Side Bar 
         --------------------------------------------------->
         {{ template "sidebar" . }}
-            
+        
+        <div class="main-content" style="color: gray; background-color: #f6eee3;">
+           
             <h1>Editor</h1>
             
             <!------------------------------------------------ 
@@ -43,13 +41,14 @@
             <!------------------------------------------------ 
                             Quill Text Editor  
             --------------------------------------------------->
-            <div id="editor" class="editor">
+            <div id="editor" class="editor" style="color: black; background-color: white;">
                 <script>
                     const options = {
                         theme: 'snow',
                         syntax: true,
+                        placeholder: "What do you have to tell me?",
                         modules : {
-                            toolbar: null
+                            toolbar: true
                         }
                     }
                     const quill = new Quill('#editor', options);
